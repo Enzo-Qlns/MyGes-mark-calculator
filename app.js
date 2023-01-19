@@ -2,6 +2,10 @@ function sum(arr) {
     return arr.reduce((a, b) => a + b, 0);
 };
 
+function checkPair(nbr) {
+    return nbr % 2 == 0 ? true : false;
+}
+
 function getAverage(col) {
     array_note_coef = [];
     let notes, coefs;
@@ -94,12 +98,14 @@ function CreateTable() {
 
     // ligne vide
     const trBlank = document.createElement('tr');
+    trBlank.id = 'Moyenne';
     tdBlank = document.createElement('td');
     tdBlank.innerHTML = '';
     tdBlank.colSpan = 7;
 
     // ligne CC && Exam
     const tr_CC_Exam = document.createElement('tr');
+    tr_CC_Exam.id = 'Moyenne';
 
     const td_Blank = document.createElement('td');
     const td_CC1 = document.createElement('td');
@@ -133,6 +139,7 @@ function CreateTable() {
 
     // ligne B1
     const trB1 = document.createElement('tr');
+    trB1.id = 'Moyenne';
 
     const td_B1 = document.createElement('td');
     const td_B1_CC1 = document.createElement('td');
@@ -161,6 +168,7 @@ function CreateTable() {
 
     // Ligne B2
     const trB2 = document.createElement('tr');
+    trB2.id = 'Moyenne';
 
     const td_B2 = document.createElement('td');
     const td_B2_CC1 = document.createElement('td');
@@ -189,6 +197,7 @@ function CreateTable() {
 
     // Ligne B3
     const trB3 = document.createElement('tr');
+    trB3.id = 'Moyenne';
 
     const td_B3 = document.createElement('td');
     const td_B3_CC1 = document.createElement('td');
@@ -217,6 +226,7 @@ function CreateTable() {
 
     // Ligne B4
     const trB4 = document.createElement('tr');
+    trB4.id = 'Moyenne';
 
     const td_B4 = document.createElement('td');
     const td_B4_CC1 = document.createElement('td');
@@ -244,6 +254,7 @@ function CreateTable() {
 
     // ligne moyenne globale
     const trMoyenne_globale = document.createElement('tr');
+    trMoyenne_globale.id = 'Moyenne';
 
     const tdTitre = document.createElement('td');
     const td_CC1_Moyenne_globale = document.createElement('td');
@@ -256,22 +267,21 @@ function CreateTable() {
     tdTitre.style.fontWeight = 535;
     tdTitre.style.color = '#676562';
     tdTitre.colSpan = 4;
-    td_CC1_Moyenne_globale.innerHTML = isNaN(Moyenne_by_colArray(getAverage(1))) ? 'nc' : Moyenne_by_colArray(getAverage(1));;
+    td_CC1_Moyenne_globale.innerHTML = isNaN(Moyenne_by_colArray(getAverage(1))) ? 'nc' : Moyenne_by_colArray(getAverage(1));
     td_CC1_Moyenne_globale.style.textAlign = 'center';
     td_CC1_Moyenne_globale.style.fontSize = '20px';
     td_CC1_Moyenne_globale.style.color = 'aliceblue';
-    td_CC1_Moyenne_globale.style.background = Moyenne_by_colArray(getAverage(1)) < 10 ? '#e76f51' : Moyenne_by_colArray(getAverage(1)) <= 12 ? '#f4a261' : '#264653';;
-    td_CC2_Moyenne_globale.innerHTML = isNaN(Moyenne_by_colArray(getAverage(2))) ? 'nc' : Moyenne_by_colArray(getAverage(2));;
+    td_CC1_Moyenne_globale.style.background = Moyenne_by_colArray(getAverage(1)) < 10 ? '#e76f51' : Moyenne_by_colArray(getAverage(1)) <= 12 ? '#f4a261' : '#264653';
+    td_CC2_Moyenne_globale.innerHTML = isNaN(Moyenne_by_colArray(getAverage(2))) ? 'nc' : Moyenne_by_colArray(getAverage(2));
     td_CC2_Moyenne_globale.style.textAlign = 'center';
     td_CC2_Moyenne_globale.style.fontSize = '20px';
     td_CC2_Moyenne_globale.style.color = 'aliceblue';
-    td_CC2_Moyenne_globale.style.background = Moyenne_by_colArray(getAverage(2)) < 10 ? '#e76f51' : Moyenne_by_colArray(getAverage(2)) <= 12 ? '#f4a261' : '#264653';;
-    td_Exam_Moyenne_globale.innerHTML = isNaN(Moyenne_by_colArray(getAverage(3))) ? 'nc' : Moyenne_by_colArray(getAverage(3));;
+    td_CC2_Moyenne_globale.style.background = Moyenne_by_colArray(getAverage(2)) < 10 ? '#e76f51' : Moyenne_by_colArray(getAverage(2)) <= 12 ? '#f4a261' : '#264653';
+    td_Exam_Moyenne_globale.innerHTML = isNaN(Moyenne_by_colArray(getAverage(3))) ? 'nc' : Moyenne_by_colArray(getAverage(3));
     td_Exam_Moyenne_globale.style.textAlign = 'center';
     td_Exam_Moyenne_globale.style.fontSize = '20px';
     td_Exam_Moyenne_globale.style.color = 'aliceblue';
-    td_Exam_Moyenne_globale.style.background = Moyenne_by_colArray(getAverage(3)) < 10 ? '#e76f51' : Moyenne_by_colArray(getAverage(3)) <= 12 ? '#f4a261' : '#264653';;
-
+    td_Exam_Moyenne_globale.style.background = Moyenne_by_colArray(getAverage(3)) < 10 ? '#e76f51' : Moyenne_by_colArray(getAverage(3)) <= 12 ? '#f4a261' : '#264653';
 
 
     // Ajout des élements
@@ -280,14 +290,23 @@ function CreateTable() {
     trB2.append(td_B2, td_B2_CC1, td_B2_CC2, td_B2_Exam);
     trB3.append(td_B3, td_B3_CC1, td_B3_CC2, td_B3_Exam);
     trB4.append(td_B4, td_B4_CC1, td_B4_CC2, td_B4_Exam);
-    trMoyenne_globale.append(tdTitre, td_CC1_Moyenne_globale, td_CC2_Moyenne_globale, td_Exam_Moyenne_globale)
+    trMoyenne_globale.append(tdTitre, td_CC1_Moyenne_globale, td_CC2_Moyenne_globale, td_Exam_Moyenne_globale);
     tbody.append(trBlank, tr_CC_Exam, trB1, trB2, trB3, trB4, trMoyenne_globale);
 };
 
 
 (function () {
+    let count = 0;
     const main = () => {
-        CreateTable();
+        const note = document.getElementById('marksForm:marksWidget:title');
+        note.style.cursor = 'pointer';
+        note.style.textDecoration = 'underline';
+        note.style.fontSize = '16px'
+
+        note.addEventListener('click', () => {
+            checkPair(count) ? CreateTable() : window.location.reload(), count = 0;            
+            count++;
+        });
     }
-    main()
+    main();
 })();
