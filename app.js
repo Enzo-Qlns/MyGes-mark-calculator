@@ -110,7 +110,7 @@ function CreateTable() {
     const td_CC2 = document.createElement('td');
     const td_Exam = document.createElement('td');
 
-    td_Blank.innerHTML = 'Apreçu de vos Moyennes';
+    td_Blank.innerHTML = 'Aperçu de vos Moyennes';
     td_Blank.style.fontSize = '27px';
     td_Blank.style.fontWeight = 535;
     td_Blank.style.color = '#264653';
