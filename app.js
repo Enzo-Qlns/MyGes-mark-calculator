@@ -98,14 +98,12 @@ function CreateTable() {
 
     // ligne vide
     const trBlank = document.createElement('tr');
-    trBlank.id = 'Moyenne';
     tdBlank = document.createElement('td');
     tdBlank.innerHTML = '';
     tdBlank.colSpan = 7;
 
     // ligne CC && Exam
     const tr_CC_Exam = document.createElement('tr');
-    tr_CC_Exam.id = 'Moyenne';
 
     const td_Blank = document.createElement('td');
     const td_CC1 = document.createElement('td');
@@ -139,7 +137,6 @@ function CreateTable() {
 
     // ligne B1
     const trB1 = document.createElement('tr');
-    trB1.id = 'Moyenne';
 
     const td_B1 = document.createElement('td');
     const td_B1_CC1 = document.createElement('td');
@@ -168,7 +165,6 @@ function CreateTable() {
 
     // Ligne B2
     const trB2 = document.createElement('tr');
-    trB2.id = 'Moyenne';
 
     const td_B2 = document.createElement('td');
     const td_B2_CC1 = document.createElement('td');
@@ -197,7 +193,6 @@ function CreateTable() {
 
     // Ligne B3
     const trB3 = document.createElement('tr');
-    trB3.id = 'Moyenne';
 
     const td_B3 = document.createElement('td');
     const td_B3_CC1 = document.createElement('td');
@@ -226,7 +221,6 @@ function CreateTable() {
 
     // Ligne B4
     const trB4 = document.createElement('tr');
-    trB4.id = 'Moyenne';
 
     const td_B4 = document.createElement('td');
     const td_B4_CC1 = document.createElement('td');
@@ -254,7 +248,6 @@ function CreateTable() {
 
     // ligne moyenne globale
     const trMoyenne_globale = document.createElement('tr');
-    trMoyenne_globale.id = 'Moyenne';
 
     const tdTitre = document.createElement('td');
     const td_CC1_Moyenne_globale = document.createElement('td');
