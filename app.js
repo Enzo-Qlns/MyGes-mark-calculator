@@ -79,7 +79,7 @@ function getAverage(col) {
     return AllMoyenne;
 }
 
-function Moyenne_by_colArray(colArray) {
+function get_moyenne_by_colArray(colArray) {
     let AllMoyenne_for_Col = colArray.map(val => val === "nc" ? 0 : val);
     let count = 0;
     let Moyenne_Global = 0;
@@ -260,21 +260,21 @@ function CreateTable() {
     tdTitre.style.fontWeight = 535;
     tdTitre.style.color = '#676562';
     tdTitre.colSpan = 4;
-    td_CC1_Moyenne_globale.innerHTML = isNaN(Moyenne_by_colArray(getAverage(1))) ? 'nc' : Moyenne_by_colArray(getAverage(1));
+    td_CC1_Moyenne_globale.innerHTML = isNaN(get_moyenne_by_colArray(getAverage(1))) ? 'nc' : get_moyenne_by_colArray(getAverage(1));
     td_CC1_Moyenne_globale.style.textAlign = 'center';
     td_CC1_Moyenne_globale.style.fontSize = '20px';
     td_CC1_Moyenne_globale.style.color = 'aliceblue';
-    td_CC1_Moyenne_globale.style.background = Moyenne_by_colArray(getAverage(1)) < 10 ? '#e76f51' : Moyenne_by_colArray(getAverage(1)) <= 12 ? '#f4a261' : '#264653';
-    td_CC2_Moyenne_globale.innerHTML = isNaN(Moyenne_by_colArray(getAverage(2))) ? 'nc' : Moyenne_by_colArray(getAverage(2));
+    td_CC1_Moyenne_globale.style.background = get_moyenne_by_colArray(getAverage(1)) < 10 ? '#e76f51' : get_moyenne_by_colArray(getAverage(1)) <= 12 ? '#f4a261' : '#264653';
+    td_CC2_Moyenne_globale.innerHTML = isNaN(get_moyenne_by_colArray(getAverage(2))) ? 'nc' : get_moyenne_by_colArray(getAverage(2));
     td_CC2_Moyenne_globale.style.textAlign = 'center';
     td_CC2_Moyenne_globale.style.fontSize = '20px';
     td_CC2_Moyenne_globale.style.color = 'aliceblue';
-    td_CC2_Moyenne_globale.style.background = Moyenne_by_colArray(getAverage(2)) < 10 ? '#e76f51' : Moyenne_by_colArray(getAverage(2)) <= 12 ? '#f4a261' : '#264653';
-    td_Exam_Moyenne_globale.innerHTML = isNaN(Moyenne_by_colArray(getAverage(3))) ? 'nc' : Moyenne_by_colArray(getAverage(3));
+    td_CC2_Moyenne_globale.style.background = get_moyenne_by_colArray(getAverage(2)) < 10 ? '#e76f51' : get_moyenne_by_colArray(getAverage(2)) <= 12 ? '#f4a261' : '#264653';
+    td_Exam_Moyenne_globale.innerHTML = isNaN(get_moyenne_by_colArray(getAverage(3))) ? 'nc' : get_moyenne_by_colArray(getAverage(3));
     td_Exam_Moyenne_globale.style.textAlign = 'center';
     td_Exam_Moyenne_globale.style.fontSize = '20px';
     td_Exam_Moyenne_globale.style.color = 'aliceblue';
-    td_Exam_Moyenne_globale.style.background = Moyenne_by_colArray(getAverage(3)) < 10 ? '#e76f51' : Moyenne_by_colArray(getAverage(3)) <= 12 ? '#f4a261' : '#264653';
+    td_Exam_Moyenne_globale.style.background = get_moyenne_by_colArray(getAverage(3)) < 10 ? '#e76f51' : get_moyenne_by_colArray(getAverage(3)) <= 12 ? '#f4a261' : '#264653';
 
 
     // Ajout des élements
@@ -297,7 +297,7 @@ function CreateTable() {
         note.style.fontSize = '16px'
 
         note.addEventListener('click', () => {
-            checkPair(count) ? CreateTable() : window.location.reload(), count = 0;            
+            checkPair(count) ? CreateTable() : window.location.reload(), count = 0;
             count++;
         });
     }
