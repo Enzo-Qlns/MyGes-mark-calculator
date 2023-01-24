@@ -150,15 +150,15 @@ function CreateTable() {
     td_B1.style.color = '#676562';
     td_B1.colSpan = 4;
     td_B1_CC1.innerHTML = getAverage(1)[0];
-    td_B1_CC1.style.background = getAverage(1)[0] < 10 ? '#e76f51' : getAverage(1) <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B1_CC1.style.background = getAverage(1)[0] === 'nc' ? '#bcbcbc' : getAverage(1)[0] < 10 ? '#e76f51' : getAverage(1) <= 12 ? '#f4a261' : '#2a9d8f';
     td_B1_CC1.style.textAlign = 'center';
     td_B1_CC1.style.fontSize = '20px';
     td_B1_CC2.innerHTML = getAverage(2)[0];
-    td_B1_CC2.style.background = getAverage(2)[0] < 10 ? '#e76f51' : getAverage(2) <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B1_CC2.style.background = getAverage(2)[0] === 'nc' ? '#bcbcbc' : getAverage(2)[0] < 10 ? '#e76f51' : getAverage(2) <= 12 ? '#f4a261' : '#2a9d8f';
     td_B1_CC2.style.textAlign = 'center';
     td_B1_CC2.style.fontSize = '20px';
     td_B1_Exam.innerHTML = getAverage(3)[0];
-    td_B1_Exam.style.background = getAverage(3)[0] < 10 ? '#e76f51' : getAverage(3) <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B1_Exam.style.background = getAverage(3)[0] === 'nc' ? '#bcbcbc' : getAverage(3)[0] < 10 ? '#e76f51' : getAverage(3) <= 12 ? '#f4a261' : '#2a9d8f';
     td_B1_Exam.style.textAlign = 'center';
     td_B1_Exam.style.fontSize = '20px';
 
@@ -178,15 +178,15 @@ function CreateTable() {
     td_B2.style.color = '#676562';
     td_B2.colSpan = 4;
     td_B2_CC1.innerHTML = getAverage(1)[1];
-    td_B2_CC1.style.background = getAverage(1)[1] < 10 ? '#e76f51' : getAverage(1)[1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B2_CC1.style.background = getAverage(1)[1] === 'nc' ? '#bcbcbc' : getAverage(1)[1] < 10 ? '#e76f51' : getAverage(1)[1] <= 12 ? '#f4a261' : '#2a9d8f';
     td_B2_CC1.style.textAlign = 'center';
     td_B2_CC1.style.fontSize = '20px';
     td_B2_CC2.innerHTML = getAverage(2)[1];
-    td_B2_CC2.style.background = getAverage(2)[1] < 10 ? '#e76f51' : getAverage(2)[1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B2_CC2.style.background = getAverage(2)[1] === 'nc' ? '#bcbcbc' : getAverage(2)[1] < 10 ? '#e76f51' : getAverage(2)[1] <= 12 ? '#f4a261' : '#2a9d8f';
     td_B2_CC2.style.textAlign = 'center';
     td_B2_CC2.style.fontSize = '20px';
     td_B2_Exam.innerHTML = getAverage(3)[1];
-    td_B2_Exam.style.background = getAverage(3)[1] < 10 ? '#e76f51' : getAverage(3)[1][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B2_Exam.style.background = getAverage(3)[1] === 'nc' ? '#bcbcbc' : getAverage(3)[1] < 10 ? '#e76f51' : getAverage(3)[1][1] <= 12 ? '#f4a261' : '#2a9d8f';
     td_B2_Exam.style.textAlign = 'center';
     td_B2_Exam.style.fontSize = '20px';
 
@@ -206,15 +206,15 @@ function CreateTable() {
     td_B3.style.color = '#676562';
     td_B3.colSpan = 4;
     td_B3_CC1.innerHTML = getAverage(1)[2];
-    td_B3_CC1.style.background = getAverage(1)[2] < 10 ? '#e76f51' : getAverage(1)[2][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B3_CC1.style.background = getAverage(1)[2] === 'nc' ? '#bcbcbc' : getAverage(1)[2] < 10 ? '#e76f51' : getAverage(1)[2][1] <= 12 ? '#f4a261' : '#2a9d8f';
     td_B3_CC1.style.textAlign = 'center';
     td_B3_CC1.style.fontSize = '20px';
     td_B3_CC2.innerHTML = getAverage(2)[2];
-    td_B3_CC2.style.background = getAverage(2)[2] < 10 ? '#e76f51' : getAverage(2)[2][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B3_CC2.style.background = getAverage(2)[2] === 'nc' ? '#bcbcbc' : getAverage(2)[2] < 10 ? '#e76f51' : getAverage(2)[2][1] <= 12 ? '#f4a261' : '#2a9d8f';
     td_B3_CC2.style.textAlign = 'center';
     td_B3_CC2.style.fontSize = '20px';
     td_B3_Exam.innerHTML = getAverage(3)[2];
-    td_B3_Exam.style.background = getAverage(3)[2] < 10 ? '#e76f51' : getAverage(3)[2][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B3_Exam.style.background = getAverage(3)[2] === 'nc' ? '#bcbcbc' : getAverage(3)[2] < 10 ? '#e76f51' : getAverage(3)[2][1] <= 12 ? '#f4a261' : '#2a9d8f';
     td_B3_Exam.style.textAlign = 'center';
     td_B3_Exam.style.fontSize = '20px';
 
@@ -234,15 +234,15 @@ function CreateTable() {
     td_B4.style.color = '#676562';
     td_B4.colSpan = 4;
     td_B4_CC1.innerHTML = getAverage(1)[3];
-    td_B4_CC1.style.background = getAverage(1)[3] < 10 ? '#e76f51' : getAverage(1)[3][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B4_CC1.style.background = getAverage(1)[3] === 'nc' ? '#bcbcbc' : getAverage(1)[3] < 10 ? '#e76f51' : getAverage(1)[3][1] <= 12 ? '#f4a261' : '#2a9d8f';
     td_B4_CC1.style.textAlign = 'center';
     td_B4_CC1.style.fontSize = '20px';
     td_B4_CC2.innerHTML = getAverage(2)[3];
-    td_B4_CC2.style.background = getAverage(2)[3] < 10 ? '#e76f51' : getAverage(2)[3][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B4_CC2.style.background = getAverage(2)[3] === 'nc' ? '#bcbcbc' : getAverage(2)[3] < 10 ? '#e76f51' : getAverage(2)[3][1] <= 12 ? '#f4a261' : '#2a9d8f';
     td_B4_CC2.style.textAlign = 'center';
     td_B4_CC2.style.fontSize = '20px';
     td_B4_Exam.innerHTML = getAverage(3)[3];
-    td_B4_Exam.style.background = getAverage(3)[3] < 10 ? '#e76f51' : getAverage(3)[3][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B4_Exam.style.background = getAverage(3)[3] === 'nc' ? '#bcbcbc' : getAverage(3)[3] < 10 ? '#e76f51' : getAverage(3)[3][1] <= 12 ? '#f4a261' : '#2a9d8f';
     td_B4_Exam.style.textAlign = 'center';
     td_B4_Exam.style.fontSize = '20px';
 
