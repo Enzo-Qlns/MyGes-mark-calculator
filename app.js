@@ -122,7 +122,7 @@ function CreateTable() {
     const td_CC2 = document.createElement('td');
     const td_Exam = document.createElement('td');
 
-    td_Blank.innerHTML = 'Aperçu de vos Moyennes';
+    td_Blank.innerHTML = `Aperçu de vos Moyennes du ${document.querySelector("#marksForm\\:j_idt172\\:periodSelect_label").innerHTML.match(/Semestre\s\d+/g).join('')}`;
     td_Blank.style.fontSize = '27px';
     td_Blank.style.fontWeight = 535;
     td_Blank.style.color = '#264653';
@@ -304,19 +304,20 @@ function CreateTable() {
     tbody.append(trBlank, tr_CC_Exam, trB1, trB2, trB3, trB4, trMoyenne_globale);
 };
 
+// Ajoute SweetAlert dans HEAD
+const head = document.querySelector("head");
 
-(function () {
-    let count = 0;
-    const main = () => {
-        const note = document.getElementById('marksForm:marksWidget:title');
-        note.style.cursor = 'pointer';
-        note.style.textDecoration = 'underline';
-        note.style.fontSize = '16px'
+// Create note button
+const note = document.getElementById('marksForm:marksWidget:title');
+note.setAttribute('style', 'cursor: pointer; text-decoration: underline; font-size: 16px;');
 
-        note.addEventListener('click', () => {
-            tool.check_pair(count) ? CreateTable() : window.location.reload(), count = 0;
-            count++;
-        });
+// MAIN
+let count = 0;
+note.addEventListener('click', () => {
+    if (document.querySelectorAll("#marksForm\\:marksWidget\\:coursesTable_head>tr>th").length !== 5) {
+        tool.check_pair(count) ? CreateTable() : window.location.reload(), count = 0;
+        count++;
+    } else {
+        alert('Pas de note');
     }
-    main();
-})();
+});
