@@ -8,11 +8,7 @@ var tool = {
     },
 
     round_value: function (nbr, power) {
-        if (Number.parseInt(nbr) || Number.parseFloat(nbr)) {
-            return Math.round((nbr) * Math.pow(10, power)) / Math.pow(10, power);
-        } else {
-            return nbr;
-        }
+        return Number.parseInt(nbr) || Number.parseFloat(nbr) ? Math.round((nbr) * Math.pow(10, power)) / Math.pow(10, power) : nbr;
     }
 }
 
