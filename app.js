@@ -300,9 +300,6 @@ function CreateTable() {
     tbody.append(trBlank, tr_CC_Exam, trB1, trB2, trB3, trB4, trMoyenne_globale);
 };
 
-// Ajoute SweetAlert dans HEAD
-const head = document.querySelector("head");
-
 // Create note button
 const note = document.getElementById('marksForm:marksWidget:title');
 note.setAttribute('style', 'cursor: pointer; text-decoration: underline; font-size: 16px;');
