@@ -1,9 +1,11 @@
-function sum(arr) {
-    return arr.reduce((a, b) => a + b, 0);
-};
+var tool = {
+    sum: function (arr) {
+        return arr.reduce((a, b) => a + b, 0);
+    },
 
-function checkPair(nbr) {
-    return nbr % 2 == 0 ? true : false;
+    checkPair: function (nbr) {
+        return nbr % 2 == 0 ? true : false;
+    }
 }
 
 function getAverage(col) {
@@ -85,7 +87,7 @@ function get_moyenne_by_colArray(colArray) {
     let Moyenne_Global = 0;
     for (i in AllMoyenne_for_Col) {
         if (AllMoyenne_for_Col[i] !== 0) {
-            Moyenne_Global = sum(AllMoyenne_for_Col);
+            Moyenne_Global = tool.sum(AllMoyenne_for_Col);
             count++;
         }
     }
@@ -297,7 +299,7 @@ function CreateTable() {
         note.style.fontSize = '16px'
 
         note.addEventListener('click', () => {
-            checkPair(count) ? CreateTable() : window.location.reload(), count = 0;
+            tool.checkPair(count) ? CreateTable() : window.location.reload(), count = 0;
             count++;
         });
     }
