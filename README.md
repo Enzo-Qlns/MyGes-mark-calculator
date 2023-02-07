@@ -1,6 +1,6 @@
 # MyGes-mark-calculator
 
-<span>Extension google qui permet d'afficher vos moyenne sur l'intranet MyGes</span>
+<span>Extension google qui permet d'afficher vos moyenne sur MyGes</span>
 
 <h2>Installation</h2>
 <li><code>git clone https://github.com/Enzo-Qlns/MyGes-mark-calculator.git</code></li>
