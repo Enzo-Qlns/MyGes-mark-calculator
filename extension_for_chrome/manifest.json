@@ -1,0 +1,15 @@
+{
+  "name": "Calcul ta moyenne! (MyGes)",
+  "version": "1.0",
+  "manifest_version": 3,
+  "description": "MyGes mark calculator",
+  "content_scripts": [
+    {
+      "matches": ["*://*.myges.fr/student/marks/*"],
+      "js": ["app.js"]
+    }
+  ],
+  "icons": {
+    "128": "logo.png"
+  }
+}
