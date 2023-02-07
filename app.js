@@ -1,1 +1,316 @@
-var tool={sum:function(e){return e.reduce((e,t)=>e+t,0)},check_pair:function(e){return e%2==0},round_value:function(e,t){return Number.parseInt(e)||Number.parseFloat(e)?Math.round(e*Math.pow(10,t))/Math.pow(10,t):e}};function get_Average(e){array_note_coef=[];let t,r;for(i=0;i<=14;i++)1===e?(t=document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(5)`),r=document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(3)`),tds=document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(1)`)):2===e?(t=document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(6)`),r=document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(3)`),tds=document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(1)`)):3===e&&(t=document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(7)`),r=document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(3)`),tds=document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(1)`)),t.forEach(e=>{r.forEach(t=>{tds.forEach(r=>{array_note_coef.push([r.innerHTML.match(/(B\d+)/g).join(""),Number.parseFloat(t.innerHTML),Number.parseFloat(e.innerHTML.replace(",","."))])})})});let n,l,a,o,c=[],g=0,d=0;for(i in array_note_coef)Number.isNaN(array_note_coef[i][2])||("B1"===array_note_coef[i][0]?(d+=array_note_coef[i][1]*array_note_coef[i][2],g+=array_note_coef[i][1],n=Math.round(d/g*100)/100):"B2"===array_note_coef[i][0]?(g=0,d=0,d+=array_note_coef[i][1]*array_note_coef[i][2],g+=array_note_coef[i][1],l=Math.round(d/g*100)/100):"B3"===array_note_coef[i][0]?(g=0,d=0,d+=array_note_coef[i][1]*array_note_coef[i][2],g+=array_note_coef[i][1],a=Math.round(d/g*100)/100):"B4"===array_note_coef[i][0]&&(g=0,d=0,d+=array_note_coef[i][1]*array_note_coef[i][2],g+=array_note_coef[i][1],o=Math.round(d/g*100)/100));return c.push(n,l,a,o),c=c.map(e=>void 0===e?"nc":e)}function get_moyenne_by_colArray(e){let t=e.map(e=>"nc"===e?0:e),r=0,n=0;for(i in t)0!==t[i]&&(n=tool.sum(t),r++);return n/r}function CreateTable(){let e=document.querySelector("#marksForm\\:marksWidget\\:coursesTable_data"),t=document.createElement("tr");t.id="Blank",(tdBlank=document.createElement("td")).innerHTML="",tdBlank.colSpan=7;let r=document.createElement("tr");r.id="_CC_Exam";let n=document.createElement("td"),l=document.createElement("td"),a=document.createElement("td"),o=document.createElement("td");n.innerHTML=`Aper\xe7u de vos Moyennes du ${document.querySelector("#marksForm\\:j_idt172\\:periodSelect_label").innerHTML.match(/Semestre\s\d+/g).join("")}`,n.style.fontSize="27px",n.style.fontWeight=535,n.style.color="#264653",n.style.textAlign="center",n.colSpan=4,l.innerHTML="CC1",l.style.textAlign="center",l.style.fontSize="27px",l.style.fontWeight=535,l.style.color="#676562",a.innerHTML="CC2",a.style.textAlign="center",a.style.fontSize="27px",a.style.fontWeight=535,a.style.color="#676562",o.innerHTML="Exam",o.style.textAlign="center",o.style.fontSize="27px",o.style.fontWeight=535,o.style.color="#676562",r.append(n,l,a,o);let c=document.createElement("tr");c.id="B1";let g=document.createElement("td"),d=document.createElement("td"),s=document.createElement("td"),y=document.createElement("td");g.innerHTML="B1",g.style.textAlign="center",g.style.fontSize="27px",g.style.fontWeight=535,g.style.color="#676562",g.colSpan=4,d.innerHTML=tool.round_value(get_Average(1)[0],2),d.style.background="nc"===get_Average(1)[0]?"#bcbcbc":get_Average(1)[0]<10?"#e76f51":12>=get_Average(1)?"#f4a261":"#2a9d8f",d.style.textAlign="center",d.style.fontSize="20px",s.innerHTML=tool.round_value(get_Average(2)[0],2),s.style.background="nc"===get_Average(2)[0]?"#bcbcbc":get_Average(2)[0]<10?"#e76f51":12>=get_Average(2)?"#f4a261":"#2a9d8f",s.style.textAlign="center",s.style.fontSize="20px",y.innerHTML=tool.round_value(get_Average(3)[0],2),y.style.background="nc"===get_Average(3)[0]?"#bcbcbc":get_Average(3)[0]<10?"#e76f51":12>=get_Average(3)?"#f4a261":"#2a9d8f",y.style.textAlign="center",y.style.fontSize="20px";let _=document.createElement("tr");_.id="B2";let A=document.createElement("td"),u=document.createElement("td"),m=document.createElement("td"),f=document.createElement("td");A.innerHTML="B2",A.style.textAlign="center",A.style.fontSize="27px",A.style.fontWeight=535,A.style.color="#676562",A.colSpan=4,u.innerHTML=tool.round_value(get_Average(1)[1],2),u.style.background="nc"===get_Average(1)[1]?"#bcbcbc":get_Average(1)[1]<10?"#e76f51":get_Average(1)[1]<=12?"#f4a261":"#2a9d8f",u.style.textAlign="center",u.style.fontSize="20px",m.innerHTML=tool.round_value(get_Average(2)[1],2),m.style.background="nc"===get_Average(2)[1]?"#bcbcbc":get_Average(2)[1]<10?"#e76f51":get_Average(2)[1]<=12?"#f4a261":"#2a9d8f",m.style.textAlign="center",m.style.fontSize="20px",f.innerHTML=tool.round_value(get_Average(3)[1],2),f.style.background="nc"===get_Average(3)[1]?"#bcbcbc":get_Average(3)[1]<10?"#e76f51":get_Average(3)[1][1]<=12?"#f4a261":"#2a9d8f",f.style.textAlign="center",f.style.fontSize="20px";let b=document.createElement("tr");b.id="B3";let v=document.createElement("td"),$=document.createElement("td"),p=document.createElement("td"),h=document.createElement("td");v.innerHTML="B3",v.style.textAlign="center",v.style.fontSize="27px",v.style.fontWeight=535,v.style.color="#676562",v.colSpan=4,$.innerHTML=tool.round_value(get_Average(1)[2],2),$.style.background="nc"===get_Average(1)[2]?"#bcbcbc":get_Average(1)[2]<10?"#e76f51":get_Average(1)[2][1]<=12?"#f4a261":"#2a9d8f",$.style.textAlign="center",$.style.fontSize="20px",p.innerHTML=tool.round_value(get_Average(2)[2],2),p.style.background="nc"===get_Average(2)[2]?"#bcbcbc":get_Average(2)[2]<10?"#e76f51":get_Average(2)[2][1]<=12?"#f4a261":"#2a9d8f",p.style.textAlign="center",p.style.fontSize="20px",h.innerHTML=tool.round_value(get_Average(3)[2],2),h.style.background="nc"===get_Average(3)[2]?"#bcbcbc":get_Average(3)[2]<10?"#e76f51":get_Average(3)[2][1]<=12?"#f4a261":"#2a9d8f",h.style.textAlign="center",h.style.fontSize="20px";let x=document.createElement("tr");x.id="B4";let S=document.createElement("td"),k=document.createElement("td"),T=document.createElement("td"),E=document.createElement("td");S.innerHTML="B4",S.style.textAlign="center",S.style.fontSize="27px",S.style.fontWeight=535,S.style.color="#676562",S.colSpan=4,k.innerHTML=tool.round_value(get_Average(1)[3],2),k.style.background="nc"===get_Average(1)[3]?"#bcbcbc":get_Average(1)[3]<10?"#e76f51":get_Average(1)[3][1]<=12?"#f4a261":"#2a9d8f",k.style.textAlign="center",k.style.fontSize="20px",T.innerHTML=tool.round_value(get_Average(2)[3],2),T.style.background="nc"===get_Average(2)[3]?"#bcbcbc":get_Average(2)[3]<10?"#e76f51":get_Average(2)[3][1]<=12?"#f4a261":"#2a9d8f",T.style.textAlign="center",T.style.fontSize="20px",E.innerHTML=tool.round_value(get_Average(3)[3],2),E.style.background="nc"===get_Average(3)[3]?"#bcbcbc":get_Average(3)[3]<10?"#e76f51":get_Average(3)[3][1]<=12?"#f4a261":"#2a9d8f",E.style.textAlign="center",E.style.fontSize="20px";let M=document.createElement("tr");M.id="Moyenne_globale";let L=document.createElement("td"),H=document.createElement("td"),z=document.createElement("td"),W=document.createElement("td");L.innerHTML="Moyenne Globale",L.style.textAlign="center",L.style.fontSize="27px",L.style.fontWeight=535,L.style.color="#676562",L.colSpan=4,H.innerHTML=isNaN(get_moyenne_by_colArray(get_Average(1)))?"nc":tool.round_value(get_moyenne_by_colArray(get_Average(1)),2),H.style.textAlign="center",H.style.fontSize="20px",H.style.color="aliceblue",H.style.background=10>get_moyenne_by_colArray(get_Average(1))?"#e76f51":12>=get_moyenne_by_colArray(get_Average(1))?"#f4a261":"#264653",z.innerHTML=isNaN(get_moyenne_by_colArray(get_Average(2)))?"nc":tool.round_value(get_moyenne_by_colArray(get_Average(2)),2),z.style.textAlign="center",z.style.fontSize="20px",z.style.color="aliceblue",z.style.background=10>get_moyenne_by_colArray(get_Average(2))?"#e76f51":12>=get_moyenne_by_colArray(get_Average(2))?"#f4a261":"#264653",W.innerHTML=isNaN(get_moyenne_by_colArray(get_Average(3)))?"nc":tool.round_value(get_moyenne_by_colArray(get_Average(3)),2),W.style.textAlign="center",W.style.fontSize="20px",W.style.color="aliceblue",W.style.background=10>get_moyenne_by_colArray(get_Average(3))?"#e76f51":12>=get_moyenne_by_colArray(get_Average(3))?"#f4a261":"#264653",t.append(tdBlank),c.append(g,d,s,y),_.append(A,u,m,f),b.append(v,$,p,h),x.append(S,k,T,E),M.append(L,H,z,W),e.append(t,r,c,_,b,x,M)}const note=document.getElementById("marksForm:marksWidget:title");note.setAttribute("style","cursor: pointer; text-decoration: underline; font-size: 16px;");let count=0;note.addEventListener("click",()=>{5!==document.querySelectorAll("#marksForm\\:marksWidget\\:coursesTable_head>tr>th").length?(tool.check_pair(count)?CreateTable():window.location.reload(),count=0,count++):alert("Pas de note")});
+var tool = {
+    sum: function (arr) {
+        return arr.reduce((a, b) => a + b, 0);
+    },
+
+    check_pair: function (nbr) {
+        return nbr % 2 == 0 ? true : false;
+    },
+
+    round_value: function (nbr, power) {
+        return Number.parseInt(nbr) || Number.parseFloat(nbr) ? Math.round((nbr) * Math.pow(10, power)) / Math.pow(10, power) : nbr;
+    }
+}
+
+function get_Average(col) {
+    array_note_coef = [];
+    let notes, coefs;
+
+    for (i = 0; i <= 14; i++) {
+        if (col === 1) {
+            notes = document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(5)`);
+            coefs = document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(3)`);
+            tds = document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(1)`);
+        } else if (col === 2) {
+            notes = document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(6)`);
+            coefs = document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(3)`);
+            tds = document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(1)`);
+        } else if (col === 3) {
+            notes = document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(7)`);
+            coefs = document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(3)`);
+            tds = document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(1)`);
+        }
+
+        notes.forEach(note => {
+            coefs.forEach(coef => {
+                tds.forEach(td => {
+                    array_note_coef.push([
+                        (td.innerHTML.match(/(B\d+)/g)).join(''), Number.parseFloat(coef.innerHTML), Number.parseFloat((note.innerHTML).replace(',', '.'))
+                    ])
+                });
+            });
+        });
+    };
+
+
+    let MoyenneB1, MoyenneB2, MoyenneB3, MoyenneB4;
+    let AllMoyenne = [];
+
+    let calculCoef = 0;
+    let calculNote = 0;
+    for (i in array_note_coef) {
+        if (!Number.isNaN(array_note_coef[i][2])) {
+            if (array_note_coef[i][0] === 'B1') {
+                calculNote += array_note_coef[i][1] * array_note_coef[i][2];
+                calculCoef += array_note_coef[i][1];
+                MoyenneB1 = Math.round((calculNote / calculCoef) * 100) / 100;
+            }
+            else if (array_note_coef[i][0] === 'B2') {
+                calculCoef = 0;
+                calculNote = 0;
+                calculNote += array_note_coef[i][1] * array_note_coef[i][2];
+                calculCoef += array_note_coef[i][1];
+                MoyenneB2 = Math.round((calculNote / calculCoef) * 100) / 100;
+            }
+            else if (array_note_coef[i][0] === 'B3') {
+                calculCoef = 0;
+                calculNote = 0;
+                calculNote += array_note_coef[i][1] * array_note_coef[i][2];
+                calculCoef += array_note_coef[i][1];
+                MoyenneB3 = Math.round((calculNote / calculCoef) * 100) / 100;
+            }
+            else if (array_note_coef[i][0] === 'B4') {
+                calculCoef = 0;
+                calculNote = 0;
+                calculNote += array_note_coef[i][1] * array_note_coef[i][2];
+                calculCoef += array_note_coef[i][1];
+                MoyenneB4 = Math.round((calculNote / calculCoef) * 100) / 100;
+            }
+        }
+    }
+
+    AllMoyenne.push(MoyenneB1, MoyenneB2, MoyenneB3, MoyenneB4);
+    AllMoyenne = AllMoyenne.map(val => val === undefined ? "nc" : val);
+
+    return AllMoyenne;
+}
+
+function get_moyenne_by_colArray(colArray) {
+    let AllMoyenne_for_Col = colArray.map(val => val === "nc" ? 0 : val);
+    let count = 0;
+    let Moyenne_Global = 0;
+    for (i in AllMoyenne_for_Col) {
+        if (AllMoyenne_for_Col[i] !== 0) {
+            Moyenne_Global = tool.sum(AllMoyenne_for_Col);
+            count++;
+        }
+    }
+    return Moyenne_Global / count;
+}
+
+function CreateTable() {
+
+    const tbody = document.querySelector("#marksForm\\:marksWidget\\:coursesTable_data");
+
+    // ligne vide
+    const trBlank = document.createElement('tr');
+    trBlank.id = 'Blank';
+    tdBlank = document.createElement('td');
+    tdBlank.innerHTML = '';
+    tdBlank.colSpan = 7;
+
+    // ligne CC && Exam
+    const tr_CC_Exam = document.createElement('tr');
+    tr_CC_Exam.id = '_CC_Exam';
+
+    const td_Blank = document.createElement('td');
+    const td_CC1 = document.createElement('td');
+    const td_CC2 = document.createElement('td');
+    const td_Exam = document.createElement('td');
+
+    td_Blank.innerHTML = `Aperçu de vos Moyennes du ${document.querySelector("#marksForm\\:j_idt172\\:periodSelect_label").innerHTML.match(/Semestre\s\d+/g).join('')}`;
+    td_Blank.style.fontSize = '27px';
+    td_Blank.style.fontWeight = 535;
+    td_Blank.style.color = '#264653';
+    td_Blank.style.textAlign = 'center';
+    td_Blank.colSpan = 4;
+    td_CC1.innerHTML = 'CC1';
+    td_CC1.style.textAlign = 'center';
+    td_CC1.style.fontSize = '27px';
+    td_CC1.style.fontWeight = 535;
+    td_CC1.style.color = '#676562';
+    td_CC2.innerHTML = 'CC2';
+    td_CC2.style.textAlign = 'center';
+    td_CC2.style.fontSize = '27px';
+    td_CC2.style.fontWeight = 535;
+    td_CC2.style.color = '#676562';
+    td_Exam.innerHTML = 'Exam';
+    td_Exam.style.textAlign = 'center';
+    td_Exam.style.fontSize = '27px';
+    td_Exam.style.fontWeight = 535;
+    td_Exam.style.color = '#676562';
+
+    tr_CC_Exam.append(td_Blank, td_CC1, td_CC2, td_Exam);
+
+
+    // ligne B1
+    const trB1 = document.createElement('tr');
+    trB1.id = 'B1';
+
+    const td_B1 = document.createElement('td');
+    const td_B1_CC1 = document.createElement('td');
+    const td_B1_CC2 = document.createElement('td');
+    const td_B1_Exam = document.createElement('td');
+
+    td_B1.innerHTML = 'B1';
+    td_B1.style.textAlign = 'center';
+    td_B1.style.fontSize = '27px';
+    td_B1.style.fontWeight = 535;
+    td_B1.style.color = '#676562';
+    td_B1.colSpan = 4;
+    td_B1_CC1.innerHTML = tool.round_value(get_Average(1)[0], 2);
+    td_B1_CC1.style.background = get_Average(1)[0] === 'nc' ? '#bcbcbc' : get_Average(1)[0] < 10 ? '#e76f51' : get_Average(1) <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B1_CC1.style.textAlign = 'center';
+    td_B1_CC1.style.fontSize = '20px';
+    td_B1_CC2.innerHTML = tool.round_value(get_Average(2)[0], 2);
+    td_B1_CC2.style.background = get_Average(2)[0] === 'nc' ? '#bcbcbc' : get_Average(2)[0] < 10 ? '#e76f51' : get_Average(2) <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B1_CC2.style.textAlign = 'center';
+    td_B1_CC2.style.fontSize = '20px';
+    td_B1_Exam.innerHTML = tool.round_value(get_Average(3)[0], 2);
+    td_B1_Exam.style.background = get_Average(3)[0] === 'nc' ? '#bcbcbc' : get_Average(3)[0] < 10 ? '#e76f51' : get_Average(3) <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B1_Exam.style.textAlign = 'center';
+    td_B1_Exam.style.fontSize = '20px';
+
+
+    // Ligne B2
+    const trB2 = document.createElement('tr');
+    trB2.id = 'B2';
+
+    const td_B2 = document.createElement('td');
+    const td_B2_CC1 = document.createElement('td');
+    const td_B2_CC2 = document.createElement('td');
+    const td_B2_Exam = document.createElement('td');
+
+    td_B2.innerHTML = 'B2';
+    td_B2.style.textAlign = 'center';
+    td_B2.style.fontSize = '27px';
+    td_B2.style.fontWeight = 535;
+    td_B2.style.color = '#676562';
+    td_B2.colSpan = 4;
+    td_B2_CC1.innerHTML = tool.round_value(get_Average(1)[1], 2);
+    td_B2_CC1.style.background = get_Average(1)[1] === 'nc' ? '#bcbcbc' : get_Average(1)[1] < 10 ? '#e76f51' : get_Average(1)[1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B2_CC1.style.textAlign = 'center';
+    td_B2_CC1.style.fontSize = '20px';
+    td_B2_CC2.innerHTML = tool.round_value(get_Average(2)[1], 2);
+    td_B2_CC2.style.background = get_Average(2)[1] === 'nc' ? '#bcbcbc' : get_Average(2)[1] < 10 ? '#e76f51' : get_Average(2)[1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B2_CC2.style.textAlign = 'center';
+    td_B2_CC2.style.fontSize = '20px';
+    td_B2_Exam.innerHTML = tool.round_value(get_Average(3)[1], 2);
+    td_B2_Exam.style.background = get_Average(3)[1] === 'nc' ? '#bcbcbc' : get_Average(3)[1] < 10 ? '#e76f51' : get_Average(3)[1][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B2_Exam.style.textAlign = 'center';
+    td_B2_Exam.style.fontSize = '20px';
+
+
+    // Ligne B3
+    const trB3 = document.createElement('tr');
+    trB3.id = 'B3';
+
+    const td_B3 = document.createElement('td');
+    const td_B3_CC1 = document.createElement('td');
+    const td_B3_CC2 = document.createElement('td');
+    const td_B3_Exam = document.createElement('td');
+
+    td_B3.innerHTML = 'B3';
+    td_B3.style.textAlign = 'center';
+    td_B3.style.fontSize = '27px';
+    td_B3.style.fontWeight = 535;
+    td_B3.style.color = '#676562';
+    td_B3.colSpan = 4;
+    td_B3_CC1.innerHTML = tool.round_value(get_Average(1)[2], 2);
+    td_B3_CC1.style.background = get_Average(1)[2] === 'nc' ? '#bcbcbc' : get_Average(1)[2] < 10 ? '#e76f51' : get_Average(1)[2][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B3_CC1.style.textAlign = 'center';
+    td_B3_CC1.style.fontSize = '20px';
+    td_B3_CC2.innerHTML = tool.round_value(get_Average(2)[2], 2);
+    td_B3_CC2.style.background = get_Average(2)[2] === 'nc' ? '#bcbcbc' : get_Average(2)[2] < 10 ? '#e76f51' : get_Average(2)[2][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B3_CC2.style.textAlign = 'center';
+    td_B3_CC2.style.fontSize = '20px';
+    td_B3_Exam.innerHTML = tool.round_value(get_Average(3)[2], 2);
+    td_B3_Exam.style.background = get_Average(3)[2] === 'nc' ? '#bcbcbc' : get_Average(3)[2] < 10 ? '#e76f51' : get_Average(3)[2][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B3_Exam.style.textAlign = 'center';
+    td_B3_Exam.style.fontSize = '20px';
+
+
+    // Ligne B4
+    const trB4 = document.createElement('tr');
+    trB4.id = 'B4';
+
+    const td_B4 = document.createElement('td');
+    const td_B4_CC1 = document.createElement('td');
+    const td_B4_CC2 = document.createElement('td');
+    const td_B4_Exam = document.createElement('td');
+
+    td_B4.innerHTML = 'B4';
+    td_B4.style.textAlign = 'center';
+    td_B4.style.fontSize = '27px';
+    td_B4.style.fontWeight = 535;
+    td_B4.style.color = '#676562';
+    td_B4.colSpan = 4;
+    td_B4_CC1.innerHTML = tool.round_value(get_Average(1)[3], 2);
+    td_B4_CC1.style.background = get_Average(1)[3] === 'nc' ? '#bcbcbc' : get_Average(1)[3] < 10 ? '#e76f51' : get_Average(1)[3][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B4_CC1.style.textAlign = 'center';
+    td_B4_CC1.style.fontSize = '20px';
+    td_B4_CC2.innerHTML = tool.round_value(get_Average(2)[3], 2);
+    td_B4_CC2.style.background = get_Average(2)[3] === 'nc' ? '#bcbcbc' : get_Average(2)[3] < 10 ? '#e76f51' : get_Average(2)[3][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B4_CC2.style.textAlign = 'center';
+    td_B4_CC2.style.fontSize = '20px';
+    td_B4_Exam.innerHTML = tool.round_value(get_Average(3)[3], 2);
+    td_B4_Exam.style.background = get_Average(3)[3] === 'nc' ? '#bcbcbc' : get_Average(3)[3] < 10 ? '#e76f51' : get_Average(3)[3][1] <= 12 ? '#f4a261' : '#2a9d8f';
+    td_B4_Exam.style.textAlign = 'center';
+    td_B4_Exam.style.fontSize = '20px';
+
+    // ligne moyenne globale
+    const trMoyenne_globale = document.createElement('tr');
+    trMoyenne_globale.id = 'Moyenne_globale';
+
+    const tdTitre = document.createElement('td');
+    const td_CC1_Moyenne_globale = document.createElement('td');
+    const td_CC2_Moyenne_globale = document.createElement('td');
+    const td_Exam_Moyenne_globale = document.createElement('td');
+
+    tdTitre.innerHTML = 'Moyenne Globale';
+    tdTitre.style.textAlign = 'center';
+    tdTitre.style.fontSize = '27px';
+    tdTitre.style.fontWeight = 535;
+    tdTitre.style.color = '#676562';
+    tdTitre.colSpan = 4;
+    td_CC1_Moyenne_globale.innerHTML = isNaN(get_moyenne_by_colArray(get_Average(1))) ? 'nc' : tool.round_value(get_moyenne_by_colArray(get_Average(1)), 2);
+    td_CC1_Moyenne_globale.style.textAlign = 'center';
+    td_CC1_Moyenne_globale.style.fontSize = '20px';
+    td_CC1_Moyenne_globale.style.color = 'aliceblue';
+    td_CC1_Moyenne_globale.style.background = get_moyenne_by_colArray(get_Average(1)) < 10 ? '#e76f51' : get_moyenne_by_colArray(get_Average(1)) <= 12 ? '#f4a261' : '#264653';
+    td_CC2_Moyenne_globale.innerHTML = isNaN(get_moyenne_by_colArray(get_Average(2))) ? 'nc' : tool.round_value(get_moyenne_by_colArray(get_Average(2)), 2);
+    td_CC2_Moyenne_globale.style.textAlign = 'center';
+    td_CC2_Moyenne_globale.style.fontSize = '20px';
+    td_CC2_Moyenne_globale.style.color = 'aliceblue';
+    td_CC2_Moyenne_globale.style.background = get_moyenne_by_colArray(get_Average(2)) < 10 ? '#e76f51' : get_moyenne_by_colArray(get_Average(2)) <= 12 ? '#f4a261' : '#264653';
+    td_Exam_Moyenne_globale.innerHTML = isNaN(get_moyenne_by_colArray(get_Average(3))) ? 'nc' : tool.round_value(get_moyenne_by_colArray(get_Average(3)), 2);
+    td_Exam_Moyenne_globale.style.textAlign = 'center';
+    td_Exam_Moyenne_globale.style.fontSize = '20px';
+    td_Exam_Moyenne_globale.style.color = 'aliceblue';
+    td_Exam_Moyenne_globale.style.background = get_moyenne_by_colArray(get_Average(3)) < 10 ? '#e76f51' : get_moyenne_by_colArray(get_Average(3)) <= 12 ? '#f4a261' : '#264653';
+
+
+    // Ajout des élements
+    trBlank.append(tdBlank);
+    trB1.append(td_B1, td_B1_CC1, td_B1_CC2, td_B1_Exam);
+    trB2.append(td_B2, td_B2_CC1, td_B2_CC2, td_B2_Exam);
+    trB3.append(td_B3, td_B3_CC1, td_B3_CC2, td_B3_Exam);
+    trB4.append(td_B4, td_B4_CC1, td_B4_CC2, td_B4_Exam);
+    trMoyenne_globale.append(tdTitre, td_CC1_Moyenne_globale, td_CC2_Moyenne_globale, td_Exam_Moyenne_globale);
+    tbody.append(trBlank, tr_CC_Exam, trB1, trB2, trB3, trB4, trMoyenne_globale);
+};
+
+// Create note button
+const note = document.getElementById('marksForm:marksWidget:title');
+note.setAttribute('style', 'cursor: pointer; text-decoration: underline; font-size: 16px;');
+
+// MAIN
+let count = 0;
+note.addEventListener('click', () => {
+    if (document.querySelectorAll("#marksForm\\:marksWidget\\:coursesTable_head>tr>th").length !== 5) {
+        tool.check_pair(count) ? CreateTable() : window.location.reload(), count = 0;
+        count++;
+    } else {
+        alert('Pas de note');
+    }
+});
