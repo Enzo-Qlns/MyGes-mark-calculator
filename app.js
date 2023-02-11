@@ -16,7 +16,8 @@ function get_Average(col) {
     array_note_coef = [];
     let notes, coefs;
 
-    for (i = 0; i <= 14; i++) {
+    const subject = document.querySelectorAll("#marksForm\\:marksWidget\\:coursesTable_data>tr").length;
+    for (i = 0; i <= subject - 1; i++) {
         if (col === 1) {
             notes = document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(5)`);
             coefs = document.querySelectorAll(`#marksForm\\:marksWidget\\:coursesTable_data > tr:nth-child(${i}) > td:nth-child(3)`);
