@@ -9,5 +9,5 @@
 <li>Rendez-vous sur <code><a href="https://myges.fr/student/marks">https://myges.fr/student/marks</a></code></li>
 <li>Cliquez sur <code>NOTES</code></li>
 <br>
-<img width="500" style="border-radius: 10px !important;" src="https://user-images.githubusercontent.com/41972537/214353911-311d07f6-7a2e-43b8-91db-2c0d0a74491c.png">
+<img width="500" src="https://user-images.githubusercontent.com/41972537/214353911-311d07f6-7a2e-43b8-91db-2c0d0a74491c.png">
 <span>Enjoy !</span>
